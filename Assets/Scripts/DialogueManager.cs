@@ -83,7 +83,19 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("TenkokuModule not found in scene. Weather effects will not work.");
         }
-        
+        else
+        {
+            try
+            {
+                tenkokuSky.weather_setAuto = true;
+                tenkokuSky.weather_forceUpdate = true;
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning("Failed to initialize Tenkoku weather auto-mode: " + ex.Message);
+            }
+        }
+
         prideEffectTriggered = false;
         
         nodeWaitCoroutine = null;

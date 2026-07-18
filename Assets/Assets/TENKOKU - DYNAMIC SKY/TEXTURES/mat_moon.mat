@@ -37,8 +37,8 @@ Material:
     - _dispStrength: 1
     - _overBright: 1
     m_Colors:
-    - _AmbientTint: {r: 0.75235623, g: 0.75235623, b: 0.75235623, a: 1}
-    - _Color: {r: 0.22770773, g: 0.15018153, b: 0.1274173, a: 0.33877474}
+    - _AmbientTint: {r: 0.7500315, g: 0.7500315, b: 0.7500315, a: 1}
+    - _Color: {r: 0.22543502, g: 0.14904107, b: 0.12680963, a: 0.33998364}
     - _GlowColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _PrimaryTint: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
