@@ -725,7 +725,11 @@ bool totalEclipse = false;
 		//GET CAMERA OBJECT
 		if (Application.isPlaying){
 			if (mainCamera == null){
-				mainCamera = Camera.main.transform;
+				if (Camera.main != null){
+					mainCamera = Camera.main.transform;
+				} else {
+					Debug.LogWarning("TenkokuModule: Camera.main is null");
+				}
 			}
 		}
 
@@ -4035,7 +4039,12 @@ if (float.IsNaN(eclipseFactor)) eclipseFactor = 1f;
 					material.SetColor("_MieColor",colorSkyboxMie);
 					material.SetFloat("_Tenkoku_MieAmt", float.IsNaN(useMieAmount) ? 0f:useMieAmount);
 					material.SetFloat("_Tenkoku_MnMieAmt",float.IsNaN(useMieMnAmount) ? 0.3f:useMieMnAmount);
-					material.SetFloat("_Tenkoku_MnIntensity", float.IsNaN(libComponent.lightObjectNight.intensity) ? 0f:libComponent.lightObjectNight.intensity);
+					float nightIntensity = 0f;
+					if (libComponent != null && libComponent.lightObjectNight != null)
+					{
+						nightIntensity = libComponent.lightObjectNight.intensity;
+					}
+					material.SetFloat("_Tenkoku_MnIntensity", float.IsNaN(nightIntensity) ? 0f : nightIntensity);
 
 
 			        Shader.SetGlobalFloat("_Tenkoku_UseElek", 1.0f);

@@ -17,4 +17,5 @@ public class Node
     public float? waitNullable;
     public bool calculateOutcome = false;
     public string playSound;
+    public float timer;
 }

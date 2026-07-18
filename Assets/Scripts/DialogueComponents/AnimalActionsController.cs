@@ -115,4 +115,14 @@ public class AnimalActionsController
             }
         }
     }
+    
+    public void TriggerActionOn(GameObject animal, string actionName, bool fromAnimator = true)
+    {
+        if (animal == null) return;
+        AnimalAction actionObj = new AnimalAction();
+        actionObj.action = actionName;
+        actionObj.animalName = animal.name;
+        actionObj.fromAnimator = fromAnimator;
+        ExecuteAnimalAction(actionObj, animal);
+    }
 }

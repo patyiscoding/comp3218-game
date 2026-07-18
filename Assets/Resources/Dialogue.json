@@ -18,14 +18,14 @@
           "camera": "VC-Main",
           "speaker": "Narrator",
           "dialogueVersions": {
-            "defaultVersion": "Welcome to the tutorial! Let's start your knowledge building. When you see two choice boxes like below, you can click on either of them to make a choice as the protagonist of the game"
+            "defaultVersion": "Welcome to the tutorial! Let's start your knowledge building. When you see two choice boxes like below, you can click on either of them to make a choice as Jack The Stag, the protagonist of the game"
           },
           "choices": [
             {
-              "choiceText": "Choose choice 1"
+              "choiceText": "Search for plants to eat"
             },
             {
-              "choiceText": "Choose choice 2"
+              "choiceText": "Hire another stag to search for plants for me"
             }
           ]
         },
@@ -35,6 +35,29 @@
           "dialogueVersions": {
             "defaultVersion": "Good choice! Now, whenever you see me, the Narrator, or animals speaking, you can navigate to the next piece of the dialogue by pressing SPACE. Press SPACE now!"
           }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Sometimes, you might want to train your hooves a bit. It could help you later on in the game, but what do I know, hah! You can do so by clicking on the Stag. Try that now and press SPACE to continue!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Oh no! See that timer? Sometimes when the pressure will be building, you'll need to make a choice quicker. If you don't make a choice before the timer runs out, the game will automatically choose for you"
+          },
+          "choices": [
+            {
+              "choiceText": "Eat plants off the ground"
+            },
+            {
+              "choiceText": "Eat plants off of a golden plate"
+            }
+          ],
+          "timer": 20
         },
         {
           "camera": "VC-Main",
@@ -77,6 +100,27 @@
           "speaker": "Narrator",
           "dialogueVersions": {
             "defaultVersion": "That was a bad pun, I know"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Hi! I'm one of your animal friends, we'll speak to you directly like this. You can press SPACE to move forward!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Did you know that kindness practiced earlier in the game gives you more empathy and practicality points than later? But hush hush!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Psst, also, I wouldn't want to gather more than 5 ego points. Unless you like getting soaked by the rain and scared by lightning!"
           }
         },
         {
@@ -159,7 +203,7 @@
               "choiceText": "Of course, I couldn't bear leaving you in need. This is what friends are for!",
               "prideChange": -1,
               "practicalityChange": 1,
-              "empathyChange": 1
+              "empathyChange": 2
             },
             {
               "choiceText": "Worms? For you? Surely you jest. I do not soil myself for a mere peasant frog",
@@ -246,8 +290,8 @@
             {
               "choiceText": "Of course! No friend should suffer while I stand idly by. I will help!",
               "prideChange": -1,
-              "practicalityChange": 1,
-              "empathyChange": 2
+              "practicalityChange": 1.5,
+              "empathyChange": 3
             }
           ]
         },
@@ -294,13 +338,13 @@
           "choices": [
             {
               "choiceText": "Obviously, it's me, the King of The Clouds! Don't you see?",
-              "prideChange": 1,
+              "prideChange": 2,
               "empathyChange": -1
             },
             {
               "choiceText": "Ah, it's just me, Stag. I'm over here",
               "prideChange": 0,
-              "empathyChange": 1
+              "empathyChange": 2
             }
           ]
         },
@@ -326,7 +370,7 @@
               "choiceText": "Oh that's understable. I'm sorry. How are you doing nowadays?",
               "prideChange": 0,
               "practicalityChange": 1,
-              "empathyChange": 1
+              "empathyChange": 3
             }
           ]
         },
@@ -426,6 +470,13 @@
               "practicalityChange": 2
             }
           ]
+        },
+        {
+          "camera": "VC-Observing2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Don't you want to test your hooves before you embark on a trip through the forest?"
+          }
         },
         {
           "camera": "VC-Moving",
@@ -603,8 +654,8 @@
             {
               "choiceText": "Better heed the birds' advice and move cautiously...",
               "prideChange": -1,
-              "practicalityChange": 1,
-              "empathyChange": 1
+              "practicalityChange": 0.5,
+              "empathyChange": 0.5
             },
             {
               "choiceText": "I wouldn't worry about that. What would they know",
@@ -612,7 +663,7 @@
               "practicalityChange": -1
             }
           ],
-          "timer": 10
+          "timer": 15
         },
         {
           "camera": "VC-Buckets",
@@ -656,10 +707,11 @@
             {
               "choiceText": "I could use the gold to start helping animals who might need it",
               "prideChange": -1,
-              "practicalityChange": 1,
-              "empathyChange": 2
+              "practicalityChange": 0.5,
+              "empathyChange": 0.5
             }
-          ]
+          ],
+          "timer": 10
         },
         {
           "camera": "VC-Harp",
@@ -752,7 +804,7 @@
               "practicalityChange": 1
             }
           ],
-          "timer": 5,
+          "timer": 7,
           "calculateOutcome": true
         },
         {

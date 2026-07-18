@@ -1,15 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 using System;
-using System.Collections;
-using System.Linq;
 using TMPro;
-using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Tenkoku.Core;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -21,11 +16,12 @@ public class DialogueManager : MonoBehaviour
     private Coroutine nodeWaitCoroutine;
     private Node alreadyChosenFollowingNode;
     public bool hasEndNodeAnimationsToRun;
+    private bool hasTimerExpired;
+    private bool currentNodeHasTimer;
     
     public TMP_Text UIWarning;
     public TMP_Text UINarrative;
-    //public TMP_Text UIStagDialogue;
-    public TMP_Text UIAnimalDialogue;
+    public Transform animalDialogue;
     public Transform choicesPanel;
     public Transform stagDialogue;
     public GameObject choicePrefab;
@@ -38,7 +34,10 @@ public class DialogueManager : MonoBehaviour
     public CameraSwitcher cameraSwitcher;
     public AnimalActionsController animalActionsController;
     public bool finalOutcomeCalculated;
+    public TextMeshProUGUI timerText;
     
+    private TenkokuModule tenkokuSky;
+    private bool prideEffectTriggered;
     
     private void Awake()
     {
@@ -79,8 +78,17 @@ public class DialogueManager : MonoBehaviour
         playerState.practicality = 0;
         finalOutcomeCalculated = false;
         
+        tenkokuSky = FindObjectOfType<TenkokuModule>();
+        if (tenkokuSky == null)
+        {
+            Debug.LogWarning("TenkokuModule not found in scene. Weather effects will not work.");
+        }
+        
+        prideEffectTriggered = false;
+        
         nodeWaitCoroutine = null;
         alreadyChosenFollowingNode = null;
+        hasTimerExpired = false;
         currentNode = nodes[0];
         ShowNode(currentNode);
     }
@@ -114,6 +122,78 @@ public class DialogueManager : MonoBehaviour
                 SwitchNode(HelperFunctions.GetNextNodeNonReliantOnChoice());
             }
         }
+
+        if (currentNode.choices != null && currentNode.choices.Length > 0 && currentNodeHasTimer)
+        {
+            if (currentNode.timer > 0)
+            {
+                timerText.gameObject.SetActive(true);
+                currentNode.timer -= Time.deltaTime;
+                timerText.text = currentNode.timer.ToString("0.00");
+            }
+            else if (!hasTimerExpired)
+            {
+                hasTimerExpired = true;
+                System.Random rng = new System.Random();
+                var random = rng.Next(0, currentNode.choices.Length);
+                print("Timer expired, randomly selecting choice: " + random);
+                ApplyChoiceAndMoveToNextNode(currentNode.choices[random]);
+            }
+        }
+        
+        // Update weather based on player stats
+        UpdateWeatherEffects();
+    }
+    
+    void UpdateWeatherEffects()
+    {
+        if (tenkokuSky == null) return;
+        
+        // trigger rain and lightning
+        if (playerState.pride >= 5 && !prideEffectTriggered)
+        {
+            prideEffectTriggered = true;
+            Debug.Log("Pride is 5! Triggering rain and lightning...");
+            
+            // disable auto weather
+            tenkokuSky.weather_setAuto = false;
+            
+            tenkokuSky.weather_cloudCumulusAmt = 0.9f;
+            tenkokuSky.weather_cloudAltoStratusAmt = 0.8f;
+            tenkokuSky.weather_cloudCirrusAmt = 0.3f;
+            
+            tenkokuSky.weather_OvercastAmt = 0.4f;
+            tenkokuSky.weather_RainAmt = 0.8f;
+            tenkokuSky.weather_lightning = 0.5f;
+            tenkokuSky.weather_FogAmt = 1f;
+            tenkokuSky.weather_WindAmt = 0.5f;
+            
+            tenkokuSky.weather_forceUpdate = true;
+        }
+        else if (playerState.pride < 5 && prideEffectTriggered)
+        {
+            prideEffectTriggered = false;
+            Debug.Log("Pride dropped below 5! Clearing rain and lightning...");
+            
+            // clear weather
+            tenkokuSky.weather_cloudCumulusAmt = 0.0f;
+            tenkokuSky.weather_cloudAltoStratusAmt = 0.0f;
+            tenkokuSky.weather_OvercastAmt = 0.0f;
+            tenkokuSky.weather_RainAmt = 0.0f;
+            tenkokuSky.weather_lightning = 0.0f;
+            tenkokuSky.weather_FogAmt = 0.0f;
+            tenkokuSky.weather_WindAmt = 0.0f;
+            
+            tenkokuSky.weather_setAuto = true;
+            tenkokuSky.weather_forceUpdate = true;
+        }
+    }
+
+    public void ApplyChoiceAndMoveToNextNode(Choice choice)
+    {
+        timerText.gameObject.SetActive(false);
+        ApplyChoice(choice);
+        SwitchNode(HelperFunctions.GetNextNodeBasedOnChoice(choice.nextNodeIdNullable));
     }
     
     // if a node during which user input comes in (space or click) has a wait time, on user input, execute that wait time and then proceed
@@ -166,9 +246,9 @@ public class DialogueManager : MonoBehaviour
     public void clearUI()
     {
         UINarrative.text = "";
-        UIAnimalDialogue.text = "";
         choicesPanel.gameObject.SetActive(false);
         stagDialogue.gameObject.SetActive(false);
+        animalDialogue.gameObject.SetActive(false);
         foreach (Transform child in choicesPanel)
         {
             Destroy(child.gameObject);
@@ -177,26 +257,31 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in animalDialogue)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     private void calculateOutcome()
     {
-        int maxScore = Math.Max(playerState.pride, Math.Max(playerState.empathy, playerState.practicality));
+        double maxScore = Math.Max(playerState.pride, Math.Max(playerState.empathy, playerState.practicality));
         finalOutcomeCalculated = true;
-        if (maxScore == playerState.pride)
+        const double EPS = 1e-6; // small tolerance
+
+        if (Math.Abs(maxScore - playerState.pride) < EPS)
         {
             playerState.lastChoiceType = ChoiceType.Ego;
             return;
         }
-        if (maxScore == playerState.empathy)
+        if (Math.Abs(maxScore - playerState.empathy) < EPS)
         {
             playerState.lastChoiceType = ChoiceType.Empathy;
             return;
         }
-        if (maxScore == playerState.practicality)
-        {
-            playerState.lastChoiceType = ChoiceType.Practicality;
-        }
+
+        // fallback to practicality
+        playerState.lastChoiceType = ChoiceType.Practicality;
     }
     
     public void ShowNode(Node node)
@@ -206,8 +291,13 @@ public class DialogueManager : MonoBehaviour
         // clear UI
         clearUI();
         
-        // switch to camera
+        hasTimerExpired = false;
+        currentNodeHasTimer = currentNode.timer > 0;
+        timerText.gameObject.SetActive(false);
+        
+        // switch camera
         Debug.Log("START node: " + node.id + " Animal actions: " + node.animalActions);
+        Debug.Log("Pride: " + playerState.pride + " Empathy: " + playerState.empathy + " Practicality: " + playerState.practicality);
         if (node.camera != null && cameraSwitcher.currentCameraName != node.camera)
         {
             cameraSwitcher.SwitchCamera(node.camera);
@@ -235,7 +325,11 @@ public class DialogueManager : MonoBehaviour
             TMP_Text textNode = UINarrative;
             if (node.speaker == "Animal")
             {
-                textNode = UIAnimalDialogue;
+                animalDialogue.gameObject.SetActive(true);
+                GameObject UIAnimalDialoguePanel = Instantiate(stagDialoguePrefab, animalDialogue);
+                Button btn = UIAnimalDialoguePanel.GetComponentInChildren<Button>();
+                TextMeshProUGUI animalDialogueText = btn.GetComponentInChildren<TextMeshProUGUI>();
+                textNode = animalDialogueText;
             } else if (node.speaker == "Stag" && node.choices == null)
             {
                 stagDialogue.gameObject.SetActive(true);
@@ -264,7 +358,8 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
-
+        
+        // handle choices
         if (node.choices != null)
         {
             choicesPanel.gameObject.SetActive(true);
@@ -277,8 +372,7 @@ public class DialogueManager : MonoBehaviour
 
                 btn.onClick.AddListener(() =>
                 {
-                    ApplyChoice(choice);
-                    SwitchNode(HelperFunctions.GetNextNodeBasedOnChoice(choice.nextNodeIdNullable));
+                    ApplyChoiceAndMoveToNextNode(choice);
                 });
             }
         }

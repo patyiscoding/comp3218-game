@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    public int pride; // vanity, ego, superficiality
-    public int empathy; // community
-    public int practicality; // humility, diligence, skill, adaptability
+    public double pride; // vanity, ego, superficiality
+    public double empathy; // community
+    public double practicality; // humility, diligence, skill, adaptability
     public ChoiceType lastChoiceType;
 }
