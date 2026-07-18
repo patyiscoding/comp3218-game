@@ -1,0 +1,960 @@
+{
+  "scenes": [
+    {
+      "sceneName": "Main",
+      "sceneNodes": [
+        {
+          "camera": "VC-Intro",
+          "followToNextNodeAutomatically": true
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "Press SPACE to start the tutorial"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Welcome to the tutorial! Let's start your knowledge building. When you see two choice boxes like below, you can click on either of them to make a choice as the protagonist of the game"
+          },
+          "choices": [
+            {
+              "choiceText": "Choose choice 1"
+            },
+            {
+              "choiceText": "Choose choice 2"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Good choice! Now, whenever you see me, the Narrator, or animals speaking, you can navigate to the next piece of the dialogue by pressing SPACE. Press SPACE now!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Nice! Now that you know how to make choices, let's put it to the test with a hypothetical. A poor animal comes up to you begging for money..."
+          },
+          "choices": [
+            {
+              "choiceText": "You give them some coins even though you're poor yourself"
+            },
+            {
+              "choiceText": "You hush them with contempt and tell them to go away"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Based on your choices, your hidden Empathy, Ego, and Practicality scores will keep accumulating in the background, quietly and slowly deciding the fate of the game"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Be empathetic to animals around and they might help you when push comes to shove. Be rational and practical or egoistical and the outcome might be different!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "You should identify which choices will increase your chances of scoring high in empathy and practicality and low in egoism... or not. It's all your choice!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "That was a bad pun, I know"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "Now, it's me, the protagonist, Jack The Stag. Whenever you see me speaking, you can also move through the game by pressing SPACE. Press SPACE now!"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Congrats! You finished the tutorial! Start the game by clicking the option below"
+          },
+          "choices": [
+            {
+              "choiceText": "Start the game"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Beanstalk, beanstalk, so tall and clear, tell me all I wish to hear"
+          }
+        },
+        {
+          "camera": "VC-Main",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "My mother sent me to the market through the forest. It looks like it's going to be quite an adventure."
+          }
+        },
+        {
+          "camera": "VC-StagZoom",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Oh, my swift, sturdy legs! For they are what is truly important",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 0
+            },
+            {
+              "choiceText": "Ohh, my golden treasures! For my fortune and glory are what matter most",
+              "prideChange": 2,
+              "practicalityChange": 0,
+              "empathyChange": 0
+            }
+          ]
+        },
+        {
+          "camera": "VC-Frog",
+          "speaker": "Animal",
+          "area": "Pond",
+          "animalActions": [
+            {
+              "animalName": "Frog",
+              "action": "Enter"
+            }
+          ],
+          "dialogueVersions": {
+            "egoVersion": "Oh, I can smell the boasting in the air",
+            "practicalityVersion": "You're so right, my friend"
+          }
+        },
+        {
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "I’m famished! Could you use your legs to help me dig up some worms?"
+          }
+        },
+        {
+          "camera": "VC-Stag",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Of course, I couldn't bear leaving you in need. This is what friends are for!",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 1
+            },
+            {
+              "choiceText": "Worms? For you? Surely you jest. I do not soil myself for a mere peasant frog",
+              "prideChange": 1,
+              "practicalityChange": -1,
+              "empathyChange": -1
+            }
+          ]
+        },
+
+        {
+          "camera": "VC-Main",
+          "speaker": "Animal",
+          "area": "Pond",
+          "dialogueVersions": {
+            "egoVersion": "Of course… someone as 'grand' as you must keep clean..",
+            "empathyVersion": "You're so kind!"
+          }
+        },
+        {
+          "speaker": "Narrator",
+          "area": "Pond",
+          "dialogueVersions": {
+            "egoVersion": "A murmur passes through the water — disappointment, quiet and heavy. The frog has died of hunger.",
+            "empathyVersion": "A small act of kindness ripples through the water — the moment passes, but its warmth remains"
+          },
+          "animalActions": [
+            {
+              "condition": "ego",
+              "animalName": "Frog",
+              "action": "Death"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Drowning",
+          "speaker": "Narrator",
+          "area": "Pond",
+          "dialogueVersions": {
+            "defaultVersion": "Oh no! A sudden crisis shakes the calm of the forest!"
+          },
+          "animalActions": [
+            {
+              "animalName": "Friend",
+              "action": "Enter"
+            },
+            {
+              "animalName": "Chicken",
+              "pluralAnimals": true,
+              "action": "Enter"
+            },
+            {
+              "condition": "ego",
+              "animalName": "Frog",
+              "action": "Exit"
+            },
+            {
+              "animalName": "Chicken",
+              "pluralAnimals": true,
+              "action": "Run",
+              "includeChildrenLayers": true
+            }
+          ]
+        },
+        {
+          "camera": "VC-DrowningHelp",
+          "speaker": "Animal",
+          "area": "Pond",
+          "dialogueVersions": {
+            "defaultVersion": "Please, mighty stag! My hen friends are struggling in the water! Can you help them before it’s too late?"
+          }
+        },
+        {
+          "camera": "VC-DrowningHelp",
+          "area": "Pond",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Oh, how amusing! Your tiny wings cannot hope to match my strength. Handle it yourselves",
+              "prideChange": 2,
+              "practicalityChange": 0,
+              "empathyChange": -1
+            },
+            {
+              "choiceText": "Of course! No friend should suffer while I stand idly by. I will help!",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 2
+            }
+          ]
+        },
+
+        {
+          "camera": "VC-DrowningHelp",
+          "speaker": "Animal",
+          "area": "Pond",
+          "dialogueVersions": {
+            "empathyVersion": "Thank you, mighty stag! I will sing your praises to all the clouds—your kindness will not be forgotten!",
+            "egoVersion": "I… I suppose I must manage on my own. I won’t forget this, and I’ll warn the others too"
+          },
+          "animalActions": [
+            {
+              "condition": "ego",
+              "animalName": "Chicken",
+              "pluralAnimals": true,
+              "action": "Drowning"
+            },
+            {
+              "condition": "empathy",
+              "animalName": "Chicken",
+              "pluralAnimals": true,
+              "action": "Exit"
+            },
+            {
+              "condition": "empathy",
+              "animalName": "SavedChic",
+              "pluralAnimals": true,
+              "action": "Enter"
+            }
+          ]
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Is someone there? I hear the clicking of hooves"
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Obviously, it's me, the King of The Clouds! Don't you see?",
+              "prideChange": 1,
+              "empathyChange": -1
+            },
+            {
+              "choiceText": "Ah, it's just me, Stag. I'm over here",
+              "prideChange": 0,
+              "empathyChange": 1
+            }
+          ]
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "I would.. if I weren't blind",
+            "empathyVersion": "Ah, pardon me, I would've noticed if it wasn't for my eyesight! I've just received a blindness diagnosis from Doctor Bird"
+          }
+        },
+
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Oh really? I bet you'd love to hear about my beauty if you can't witness it yourself, I'll tell you all about it",
+              "prideChange": 1,
+              "empathyChange": -1
+            },
+            {
+              "choiceText": "Oh that's understable. I'm sorry. How are you doing nowadays?",
+              "prideChange": 0,
+              "practicalityChange": 1,
+              "empathyChange": 1
+            }
+          ]
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Um, not really..",
+            "empathyVersion": "Thanks for asking, not too bad. Your compassion prompts me to ask: I’ll trade you a beanstalk secret for a bit of protection. Sound fair?"
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "I am dressed in gold. My treasures gleam with twelve jewels of pure perfection...",
+            "empathyVersion": "So you say? We have a deal"
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Mhm..",
+            "empathyVersion": "There's a giant near the creek. He’s fast, but he’s clumsy in the bushes. If he jumps, don't look back—just trust your feet and use your antlers"
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "Can you imagine such glory?",
+            "empathyVersion": "Oh that's definitely worth to know!"
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Thanks.. I can't wait to tell others about you...",
+            "empathyVersion": "Be careful out there!"
+          }
+        },
+        {
+          "camera": "VC-Frog2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Hey there again! I've been keeping an eye on you"
+          }
+        },
+        {
+          "camera": "VC-Frog2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Are you new here? What's that distinguished posture?"
+          }
+        },
+        {
+          "camera": "VC-Frog2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "You aren't the King of The Clouds last time I checked..."
+          }
+        },
+        {
+          "camera": "VC-Observing",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Walking regally makes you unbalanced, but your reflection, oh how beautiful it is..."
+          }
+        },
+        {
+          "camera": "VC-Observing",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Walking steadily would keep you balanced and secure..."
+          }
+        },
+        {
+          "camera": "VC-Observing",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "but do you really want to sacrifice the feeling of being royal?"
+          }
+        },
+        {
+          "camera": "VC-Observing",
+          "choices": [
+            {
+              "choiceText": "Walk through the forest with a high, heavy-footed stride to maintain a regal posture",
+              "prideChange": 2,
+              "practicalityChange": -1
+            },
+            {
+              "choiceText": "Walk balanced. You never know how your experience of good footing might help later on",
+              "prideChange": -1,
+              "practicalityChange": 2
+            }
+          ]
+        },
+        {
+          "camera": "VC-Moving",
+          "followToNextNodeAutomatically": true
+        },
+        {
+          "camera": "VC-Gossip",
+          "area": "Gossip",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Ah, seems like some gossip has spread already anyway..."
+          },
+          "animalActions": [
+            {
+              "animalName": "Birds",
+              "action": "Enter"
+            },
+            {
+              "animalName": "Frog",
+              "action": "Idle",
+              "pluralAnimals": true
+            }
+          ]
+        },
+        {
+          "camera": "VC-Gossip",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "There's some negativity in the air..."
+          }
+        },
+        {
+          "camera": "VC-Gossip-Deer",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Have you noticed how he walks lately? Antlers high, eyes forward. He barely looks at us"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Cow",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "My opinion is far from favourable. He sold me to an old man for five mere beans!"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Frogs",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "They say he thinks himself above the village now too"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Frogs",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "I don’t know if that’s true… but no one has said otherwise..."
+          }
+        },
+        {
+          "camera": "VC-Gossip",
+          "area": "Gossip",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Friends, I hear your whispers. Is there worry in your hearts? Let us speak openly",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 2
+            },
+            {
+              "choiceText": "Hush, peasants. Your gossip is beneath me. Let silence remind you of your place",
+              "prideChange": 2,
+              "practicalityChange": -1,
+              "empathyChange": -1
+            }
+          ]
+        },
+        {
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Huh? Laughable. The true colors are showing",
+            "empathyVersion": "Oh, that's unexpected. We... we never thought a Stag of your stature would care for our tiny worries!"
+          }
+        },
+        {
+          "camera": "VC-Gossip",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "We will keep our distance. Loud antlers draw quiet enemies",
+            "empathyVersion": "We worried you would laugh at us… but you're listening. That matters more than you know"
+          }
+        },
+
+        {
+          "camera": "VC-Gossip",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "egoVersion": "The clouds feel lighter. By choosing to listen, you've gained some friendly eyes and ears",
+            "empathyVersion": "Seems like you've frustrated the Forest Council a bit..."
+          }
+        },
+        {
+          "camera": "VC-Gossip",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "So much of this walking... I've grown thirsty"
+          }
+        },
+        {
+          "camera": "VC-Pool",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "The water here glows almost radioactively — beautiful, shimmering, yet somewhat... wrong. The forest grows quiet around it."
+          }
+        },
+        {
+          "camera": "VC-Pool2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Hey you! Watch out! The pond here is not what you think it is..."
+          }
+        },
+        {
+          "camera": "VC-Pool2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Drink deeply from it and it will restore your full health, but ruin some of your beauty"
+          }
+        },
+        {
+          "camera": "VC-Pool2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Drink only a sip of the clean surface, and it'll elevate your looks but leave you exhausted"
+          }
+        },
+        {
+          "camera": "VC-Pool2",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "I'd choose wisely!"
+          }
+        },
+        {
+          "camera": "VC-Pool",
+          "choices": [
+            {
+              "choiceText": "I'll drink a lot of this magical water. How could I not if it promises immense beauty",
+              "prideChange": 2,
+              "practicalityChange": -1
+            },
+            {
+              "choiceText": "I'll stick to being practical — I need my health after all",
+              "prideChange": -1,
+              "practicalityChange": 2
+            }
+          ]
+        },
+        {
+          "camera": "VC-Pool",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "egoVersion": "You take a deep, deep gulp, careful not to disturb your reflection. Even more beauty, but your knees tremble with fatigue",
+            "practicalityVersion": "A shallow sip later, and although your beauty has taken a toll, you can feel yourself getting so much stronger"
+          }
+        },
+        {
+          "camera": "VC-Birds",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Do you hear that? Sounds like a group of birds chirping about danger..."
+          },
+          "choices": [
+            {
+              "choiceText": "Better heed the birds' advice and move cautiously...",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 1
+            },
+            {
+              "choiceText": "I wouldn't worry about that. What would they know",
+              "prideChange": 1,
+              "practicalityChange": -1
+            }
+          ],
+          "timer": 10
+        },
+        {
+          "camera": "VC-Buckets",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "But in the meantime... what are these?"
+          },
+          "playSound": "Wood"
+        },
+        {
+          "camera": "VC-Buckets",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "Seems like they might be useful"
+          }
+        },
+        {
+          "camera": "VC-Buckets",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "Could I use them to build myself a... castle? Imagine that!"
+          }
+        },
+        {
+          "camera": "VC-Buckets",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "My quest to become the King of The Clouds would surely be complete soon after!"
+          }
+        },
+        {
+          "camera": "VC-Buckets",
+          "speaker": "Stag",
+          "choices": [
+            {
+              "choiceText": "Build yourself a castle out of this gold",
+              "prideChange": 2,
+              "practicalityChange": -1,
+              "empathyChange": -1
+            },
+            {
+              "choiceText": "I could use the gold to start helping animals who might need it",
+              "prideChange": -1,
+              "practicalityChange": 1,
+              "empathyChange": 2
+            }
+          ]
+        },
+        {
+          "camera": "VC-Harp",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "A beautiful harp glimmers at the water's edge.. the legend says that it will start to sing if you touch it"
+          }
+        },
+        {
+          "camera": "VC-Harp",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "I better not touch it then. I have a very particular fear of mid-sized singing objects."
+          }
+        },
+        {
+          "camera": "VC-Beanstalk",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "defaultVersion": "And what's this? Is that..."
+          }
+        },
+        {
+          "camera": "VC-Beanstalk2",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "A beanstalk? Yes. This one leads up to the Giant's castle in the clouds. Are you sure you wish to head there..."
+          }
+        },
+        {
+          "camera": "VC-Buckets2",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "I'd rather not come across the giant. So, now, onto castle building! Oh wait, what's that haunting feeling, and that sound...",
+            "empathyVersion": "I'd rather not come across the giant. Let's share this gold instead! Oh wait, what's that haunting feeling, and that sound.."
+          }
+        },
+        {
+          "camera": "VC-Danger",
+          "speaker": "Narrator",
+          "area": "Attack",
+          "dialogueVersions": {
+            "defaultVersion": "Worry is starting to build..."
+          },
+          "animalActions": [
+            {
+              "animalName": "Deer",
+              "action": "Enter"
+            },
+            {
+              "animalName": "Tiger",
+              "action": "Enter"
+            }
+          ],
+          "playSound": "Danger"
+        },
+        {
+          "camera": "VC-Danger",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "Just need to be a little quiet now..."
+          }
+        },
+        {
+          "camera": "VC-Danger2",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "defaultVersion": "But... I feel a sense of.."
+          }
+        },
+        {
+          "camera": "VC-Danger3",
+          "speaker": "Narrator",
+          "area": "Attack",
+          "dialogueVersions": {
+            "defaultVersion": "...imminent danger in the air"
+          }
+        },
+        {
+          "camera": "VC-Attack",
+          "choices": [
+            {
+              "choiceText": "Let out a noble roar to assert dominance and scare that silly giant",
+              "prideChange": 1,
+              "practicalityChange": -1
+            },
+            {
+              "choiceText": "Assume your fighting position to be best prepared for any attack",
+              "prideChange": -1,
+              "practicalityChange": 1
+            }
+          ],
+          "timer": 5,
+          "calculateOutcome": true
+        },
+        {
+          "camera": "VC-Attack",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "This is fine... I am the greatest and am not scared of any giant. I am the King of the clouds after all!",
+            "practicalityVersion": "Whatever comes, my skills will take care of it. But if not, will someone help?",
+            "empathyVersion": "Oh no... hopefully my friends will help me..."
+          }
+        },
+        {
+          "camera": "VC-TreeCat",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "I've seen your pride, Stag… I’ll leave you to your vanity.",
+            "practicalityVersion": "I've to watch from afar. The fear may scare me, but your skill is still with you!",
+            "empathyVersion": "Stag, your care has not gone unnoticed! I’ll organise others to help right away!"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Frogs",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Hmph! Your inflated level of pride doesn't really convince us to help, \"King of The Clouds\"...",
+            "practicalityVersion": "you move well and can survive the forest!",
+            "empathyVersion": "Thank you for helping us earlier!"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Frogs",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "I'm small and ugly, but the Giant never sees me. Can you say the same, Big-Horns?",
+            "practicalityVersion": "you move well and can survive the forest!",
+            "empathyVersion": "We’ll jump to your rescue!"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Chicken",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "Your antlers may shine, but your heart does not. We cannot help you.",
+            "practicalityVersion": "We see you are capable… that should be enough!",
+            "empathyVersion": "Stag, your kindness saved us before! We will flock around you!"
+          }
+        },
+        {
+          "camera": "VC-Gossip-Horse",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "A proud stag stands alone. We will let him face the forest himself.",
+            "practicalityVersion": "The fear makes us stay away, but you're clever and fast",
+            "empathyVersion": "A friend who cares is a friend indeed. We will stay close!"
+          }
+        },
+        {
+          "camera": "VC-Tiger",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "egoVersion": "The stag relies on pride… hah, what easy prey",
+            "practicalityVersion": "I heard of his skills, but let's see how they measure against ME!",
+            "empathyVersion": "I heard the birds chirping about being his popularity. But maybe all of that were lies"
+          }
+        },
+
+        {
+          "camera": "VC-Final-Stag",
+          "speaker": "Stag",
+          "area": "Attack",
+          "dialogueVersions": {
+            "egoVersion": "I don't need the help of you lot. Victory is mine whether you like it or not",
+            "practicalityVersion": "Others are keeping to themselves, but they do give some good advice",
+            "empathyVersion": "All that kindness warms my heart so intensely. I can feel your protection, friends!"
+          }
+        },
+        {
+          "camera": "VC-Final-Attack",
+          "area": "Attack",
+          "speaker": "Animal",
+          "dialogueVersions": {
+            "defaultVersion": "Giant's feast!"
+          },
+          "animalActions": [
+            {
+              "animalName": "Tiger",
+              "action": "Run"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Final-ZoomOut",
+          "area": "Helpers",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "Bring it on, peasant! Hah!",
+            "practicalityVersion": "I can do this, I can do this, I can do this",
+            "empathyVersion": "Friends! You're here!"
+          },
+          "animalActions": [
+            {
+              "condition": "empathy",
+              "animalName": "All",
+              "pluralAnimals": true,
+              "action": "Enter"
+            },
+            {
+              "condition": "practicality",
+              "animalName": "Deer",
+              "action": "Run"
+            },
+            {
+              "condition": "ego",
+              "animalName": "Deer",
+              "action": "Run"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Final-StagZoom",
+          "speaker": "Narrator",
+          "area": "Attack",
+          "dialogueVersions": {
+            "egoVersion": "Death. Death has come.",
+            "practicalityVersion": "The stag's skill saved its life, but without others around, the victory feels... hollow",
+            "empathyVersion": "The stag's kindness is remembered. Animals gather around, offering their aid and gratitude"
+          },
+          "animalActions": [
+            {
+              "animalName": "Deer",
+              "action": "Idle"
+            }
+          ]
+        },
+        {
+          "camera": "VC-Final-StagZoom",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "But... but I am.. I was the greatest!",
+            "practicalityVersion": "I thought I was the forest’s marvel, but…",
+            "empathyVersion": "I thought my antlers were all that mattered..."
+          }
+        },
+        {
+          "camera": "VC-Final-StagZoom",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "How could this be...",
+            "practicalityVersion": "...maybe I underestimated others",
+            "empathyVersion": "...but it was my legs, my care, and my friends that saved me"
+          }
+        },
+        {
+          "camera": "VC-Final-StagZoom",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "...I valued what glittered",
+            "practicalityVersion": "I relied on skill alone...",
+            "empathyVersion": "I see now that kindness and care are as strong as legs or antlers"
+          }
+        },
+        {
+          "camera": "VC-Final-StagZoom",
+          "speaker": "Stag",
+          "dialogueVersions": {
+            "egoVersion": "...ignored what truly mattered",
+            "practicalityVersion": "...yet some subtle things slipped past me",
+            "empathyVersion": "Friends make the forest safer"
+          }
+        },
+        {
+          "camera": "VC-End",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "egoVersion": "Alone, the stag learned the cost of vanity and pride",
+            "practicalityVersion": "Surviving through skill alone, the stag realized...",
+            "empathyVersion": "Surrounded by friends, the stag finally understands..."
+          }
+        },
+        {
+          "camera": "VC-End",
+          "speaker": "Narrator",
+          "dialogueVersions": {
+            "egoVersion": "What was truly valuable went underrated...",
+            "practicalityVersion": "you can value your own skill, but valuing those around as well brings ultimate peace in the end",
+            "empathyVersion": "what is truly valuable is often underrated"
+          }
+        },
+        {
+          "camera": "VC-End",
+          "choices": [
+            {
+              "choiceText": "Restart game",
+              "restart": true
+            },
+            {
+              "choiceText": "Exit game",
+              "exit": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
